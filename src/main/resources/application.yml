@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: oerp
+  datasource:
+    url: jdbc:mysql://localhost:3306/oerl?useSSL=false&serverTimezone=Asia/Shanghai
+    username: chenli
+    password: 190014
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cache:
+    type: caffeine
+    cache-names:
+      - IMAGE_CAPTCHA_CACHE
+      - SMS_CAPTCHA_CACHE
+    couchbase:
+      expiration: 300
+  profiles:
+    active: dev
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mybatis/xml/**/*.xml
+  global-config:
+    banner: false
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+management:
+  server:
+    port: 8001
+  endpoint:
+    health:
+      show-details: always
